@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'EGGProgressHUD_Example' do
+  pod 'EGGProgressHUD', :path => '../'
+
+  target 'EGGProgressHUD_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

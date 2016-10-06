@@ -1,0 +1,6 @@
+framework module EGGProgressHUD {
+  umbrella header "EGGProgressHUD-umbrella.h"
+
+  export *
+  module * { export * }
+}

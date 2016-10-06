@@ -1,0 +1,6 @@
+framework module Pods_EGGProgressHUD_Tests {
+  umbrella header "Pods-EGGProgressHUD_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

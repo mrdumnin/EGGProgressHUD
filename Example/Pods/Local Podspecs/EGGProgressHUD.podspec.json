@@ -1,0 +1,22 @@
+{
+  "name": "EGGProgressHUD",
+  "version": "0.1.0",
+  "summary": "A short description of EGGProgressHUD.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/EGGProgressHUD",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Suchon Dumnin": "mrdumnin@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/EGGProgressHUD.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "EGGProgressHUD/Classes/**/*"
+}
