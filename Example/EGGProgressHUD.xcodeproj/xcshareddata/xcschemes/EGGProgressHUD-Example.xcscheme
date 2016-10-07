@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "21FB27A81DA765680008038B"
                BuildableName = "EGGProgressHUD_Tests.xctest"
                BlueprintName = "EGGProgressHUD_Tests"
                ReferencedContainer = "container:EGGProgressHUD.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BlueprintIdentifier = "21FB27A81DA765680008038B"
                BuildableName = "EGGProgressHUD_Tests.xctest"
                BlueprintName = "EGGProgressHUD_Tests"
                ReferencedContainer = "container:EGGProgressHUD.xcodeproj">
