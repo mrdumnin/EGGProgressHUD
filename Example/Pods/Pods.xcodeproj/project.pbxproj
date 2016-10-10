@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12AB16E9DAB5C242AA8AB9D9AD39C5D2 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A4877E11AABB3688BBFEB2638BDF9F /* ReplaceMe.swift */; };
 		479CBE43C45B628A411B0CF36CDE65B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		60918F03D4818B02AE29DFDE6920F0F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		67701F003CA44F255FDF53FDB693A680 /* Pods-EGGProgressHUD_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D99BAA41CF375DBDF46B5FE260752390 /* Pods-EGGProgressHUD_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,7 +45,6 @@
 		62DD27AFEA152A7815BEF8B476668922 /* EGGProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EGGProgressHUD.xcconfig; sourceTree = "<group>"; };
 		7AA17064B0B88E0DCF18D22072295F2F /* Pods-EGGProgressHUD_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EGGProgressHUD_Tests-resources.sh"; sourceTree = "<group>"; };
 		80F23EA7C31523EB338735E86D8187C1 /* Pods-EGGProgressHUD_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EGGProgressHUD_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		85A4877E11AABB3688BBFEB2638BDF9F /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		8BC3CF3D92C7CCD51A213CFC4787F5D6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9449B7A19FFA4DE979CB367DD6869B60 /* Pods-EGGProgressHUD_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EGGProgressHUD_Example-resources.sh"; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				FF15DA0775862B6E98E4B51C8274A0E6 /* EGGProgressHUD.swift */,
-				85A4877E11AABB3688BBFEB2638BDF9F /* ReplaceMe.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -353,7 +350,6 @@
 			files = (
 				B50566F958519CDBA3DC14E6BA042B13 /* EGGProgressHUD-dummy.m in Sources */,
 				BE904225A39CBE37824665B3D0908464 /* EGGProgressHUD.swift in Sources */,
-				12AB16E9DAB5C242AA8AB9D9AD39C5D2 /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
