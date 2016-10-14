@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xXh-IV-Wi6" id="e6x-DS-X5N">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -106,6 +106,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uf4-XQ-IBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1854" y="1459"/>
+        </scene>
+        <!--Demo4 View Controller-->
+        <scene sceneID="bOk-kb-cvR">
+            <objects>
+                <viewController storyboardIdentifier="Demo4ViewController" id="iMr-Bq-a3d" customClass="Demo4ViewController" customModule="EGGProgressHUD_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i89-55-wS7"/>
+                        <viewControllerLayoutGuide type="bottom" id="ShJ-Nm-EkY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6sl-bV-nh5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUh-BR-rpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="2112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TOk-i9-X63">

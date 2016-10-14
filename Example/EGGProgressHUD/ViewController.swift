@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         self.datasource.addObject("Progress without BG")
         self.datasource.addObject("Progress with BG")
         self.datasource.addObject("Progress view")
+        self.datasource.addObject("Progress image")
     }
 }
 
@@ -77,6 +78,10 @@ extension ViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
             let vc = UIStoryboard.getViewController(storyboardName, viewControllerId: "Demo3ViewController") as! Demo3ViewController
+            vc.navigationItem.title = text
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 3 {
+            let vc = UIStoryboard.getViewController(storyboardName, viewControllerId: "Demo4ViewController") as! Demo4ViewController
             vc.navigationItem.title = text
             self.navigationController?.pushViewController(vc, animated: true)
         }

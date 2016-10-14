@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		214F2C8C1DB07B2200F8C184 /* Demo4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F2C8B1DB07B2200F8C184 /* Demo4ViewController.swift */; };
 		21FB27AC1DA765690008038B /* EGGProgressHUD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB27AB1DA765690008038B /* EGGProgressHUD_Tests.swift */; };
 		21FB27B41DAB366B0008038B /* Demo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB27B31DAB366B0008038B /* Demo1ViewController.swift */; };
 		21FB27B61DAB37920008038B /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FB27B51DAB37920008038B /* UIStoryboard.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		17F40B18DD387F28424445C9 /* Pods-EGGProgressHUD_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGGProgressHUD_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EGGProgressHUD_Tests/Pods-EGGProgressHUD_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		214F2C8B1DB07B2200F8C184 /* Demo4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo4ViewController.swift; sourceTree = "<group>"; };
 		21FB27A91DA765680008038B /* EGGProgressHUD_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EGGProgressHUD_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FB27AB1DA765690008038B /* EGGProgressHUD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EGGProgressHUD_Tests.swift; sourceTree = "<group>"; };
 		21FB27AD1DA765690008038B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				21FB27B31DAB366B0008038B /* Demo1ViewController.swift */,
 				21FB27B81DAB53E10008038B /* Demo2ViewController.swift */,
 				21FB27BA1DAB7B570008038B /* Demo3ViewController.swift */,
+				214F2C8B1DB07B2200F8C184 /* Demo4ViewController.swift */,
 			);
 			name = "Example for EGGProgressHUD";
 			path = EGGProgressHUD;
@@ -406,6 +409,7 @@
 			files = (
 				21FB27B91DAB53E10008038B /* Demo2ViewController.swift in Sources */,
 				21FB27BB1DAB7B570008038B /* Demo3ViewController.swift in Sources */,
+				214F2C8C1DB07B2200F8C184 /* Demo4ViewController.swift in Sources */,
 				21FB27B61DAB37920008038B /* UIStoryboard.swift in Sources */,
 				21FB27B41DAB366B0008038B /* Demo1ViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,

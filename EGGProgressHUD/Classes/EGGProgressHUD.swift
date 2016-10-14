@@ -9,22 +9,30 @@
 import UIKit
 
 public class EGGProgressHUD: NSObject {
-    
+    private var rotateAngle:CGFloat = 0.0
+    private var isAnimating:Bool = false
     private var spinner: UIActivityIndicatorView!
     private var loadingBGView: UIView!
     private var progressView: UIProgressView!
     private var loadingLabel: UILabel!
     
+    private var loadingImageView: UIImageView!
+    
     //MARK: - Property user can set
     public var type: ProgressType!
     public var style: SpinnerStyle!
     public var bgColor: UIColor!
-    //public var progress: Float!
+    public var loadingText: String!
+    public var loadingTextColor: UIColor!
+    public var progressTrackTintColor: UIColor!
+    public var progressTintColor: UIColor!
+    public var loadingImage: UIImage!
     
     public enum ProgressType {
         case ProgressWithoutBG
         case ProgressWithBG
         case ProgressView
+        case ProgressImage
     }
     
     public enum SpinnerStyle {
@@ -32,6 +40,14 @@ public class EGGProgressHUD: NSObject {
         case Gray
     }
 
+    private var bundle:NSBundle {
+        let podBundle = NSBundle(forClass: EGGProgressHUD.self)
+        
+        let bundleURL = podBundle.URLForResource("EGGProgressHUDResource", withExtension: "bundle")
+        let bundle = NSBundle(URL: bundleURL!)!
+        return bundle
+    }
+    
     //MARK: - Initial
     public override init() {
         super.init()
@@ -39,7 +55,14 @@ public class EGGProgressHUD: NSObject {
         self.type = ProgressType.ProgressWithoutBG
         self.style = SpinnerStyle.Gray
         self.bgColor = UIColor.blackColor()
-        //self.progress = 0.0
+        self.loadingTextColor = UIColor.blackColor()
+        self.progressTrackTintColor = UIColor.whiteColor()
+        self.progressTintColor = UIColor.blueColor()
+        
+        self.loadingText = "Loading..."
+        
+        //self.loadingImage = UIImage(named: "loading.png", inBundle: self.bundle, compatibleWithTraitCollection: nil)
+        self.loadingImage = UIImage(named: "Circle-Progress.png", inBundle: self.bundle, compatibleWithTraitCollection: nil)
     }
     
     public func showInView(view: UIView) {
@@ -64,6 +87,12 @@ public class EGGProgressHUD: NSObject {
             self.loadingBGView.hidden = false
             self.loadingBGView.removeFromSuperview()
             view.addSubview(self.loadingBGView)
+         } else if self.type == ProgressType.ProgressImage {
+            self.setupProgressImage()
+            
+            self.loadingImageView.hidden = false
+            self.loadingImageView.removeFromSuperview()
+            view.addSubview(self.loadingImageView)
         }
     }
     
@@ -72,6 +101,9 @@ public class EGGProgressHUD: NSObject {
             self.loadingBGView.hidden = true
         } else if self.type == ProgressType.ProgressWithoutBG {
             self.spinner.stopAnimating()
+        } else if self.type == ProgressType.ProgressImage {
+            self.stopAnimateLoadingImageView()
+            self.loadingImageView.hidden = true
         }
     }
     
@@ -145,16 +177,65 @@ public class EGGProgressHUD: NSObject {
         self.progressView.progressViewStyle = .Bar
         self.progressView.frame = CGRectMake(padding, 20, subViewWidth, 21)
         self.progressView.progress = 0.0
+        self.progressView.trackTintColor = self.progressTrackTintColor
+        self.progressView.tintColor = self.progressTintColor
         self.loadingBGView.addSubview(self.progressView)
         
         //Loading label
         self.loadingLabel = UILabel()
         self.loadingLabel.textAlignment = .Center
         self.loadingLabel.frame = CGRectMake(padding, bgSize.height - 30, subViewWidth, 21)
-        self.loadingLabel.text = "Loading..."
-        self.loadingLabel.textColor = UIColor.blackColor()
+        self.loadingLabel.text = self.loadingText
+        self.loadingLabel.textColor = self.loadingTextColor
         
         self.loadingBGView.addSubview(self.loadingLabel)
         
     }
+    
+    private func setupProgressImage() {
+        self.loadingImageView = UIImageView()
+        self.loadingImageView.image = self.loadingImage
+        self.loadingImageView.backgroundColor = UIColor.clearColor()
+        
+        let screenSize = UIScreen.mainScreen().bounds.size
+        let imageSize = CGSize(width: 40, height: 40)
+        let x = (screenSize.width / 2) - (imageSize.width / 2)
+        let y = (screenSize.height / 2) - (imageSize.height / 2)
+        
+        self.loadingImageView.frame = CGRectMake(x, y, imageSize.width, imageSize.height)
+        self.startAnimateLoadingImageView()
+        self.isAnimating = true
+    }
+    
+    private func startAnimateLoadingImageView() {
+        
+        rotateAngle += CGFloat(M_PI)
+
+        let rotateTransform = CGAffineTransformMakeRotation(rotateAngle)
+        UIView.animateWithDuration(0.4, delay: 0, options: [.AllowUserInteraction, .CurveLinear], animations: { () -> Void in
+            self.loadingImageView.transform = rotateTransform
+            },completion:  { (finished: Bool) in
+                
+                if self.isAnimating == true {
+                    self.startAnimateLoadingImageView()
+                }
+            }
+        )
+        
+    }
+    
+    /*private func rotate360Degrees(duration: CFTimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = duration
+        rotateAnimation.repeatCount = Float.infinity
+        
+        self.loadingImageView.layer.addAnimation(rotateAnimation, forKey: nil)
+    }*/
+    
+    private func stopAnimateLoadingImageView() {
+        self.isAnimating = false
+    }
 }
+

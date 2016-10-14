@@ -20,12 +20,12 @@ class Demo3ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.a = EGGProgressHUD()
         self.a.type = EGGProgressHUD.ProgressType.ProgressView
-        self.a.bgColor = UIColor.groupTableViewBackgroundColor()
-        
+        self.a.bgColor = UIColor.grayColor()
+        self.a.loadingTextColor = UIColor.whiteColor()
         self.a.showInView(self.view)
         
         self.timer = NSTimer.scheduledTimerWithTimeInterval(
@@ -37,7 +37,7 @@ class Demo3ViewController: UIViewController {
     func updateProgress() {
         
         i = i + 0.1
-        print(i)
+
         if i > 1.0 {
             self.a.setProgress(Float(self.i))
             i = 0.1
