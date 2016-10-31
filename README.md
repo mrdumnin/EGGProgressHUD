@@ -60,31 +60,31 @@ override func viewDidDisappear(animated: Bool) {
 }
 
 override func viewDidLoad() {
-super.viewDidLoad()
+    super.viewDidLoad()
 
-// Do any additional setup after loading the view.
-self.a = EGGProgressHUD()
-self.a.type = EGGProgressHUD.ProgressType.ProgressView
-self.a.bgColor = UIColor.grayColor()
-self.a.loadingTextColor = UIColor.whiteColor()
-self.a.showInView(self.view)
+    // Do any additional setup after loading the view.
+    self.a = EGGProgressHUD()
+    self.a.type = EGGProgressHUD.ProgressType.ProgressView
+    self.a.bgColor = UIColor.grayColor()
+    self.a.loadingTextColor = UIColor.whiteColor()
+    self.a.showInView(self.view)
 
-self.timer = NSTimer.scheduledTimerWithTimeInterval(
-1.0, target: self, selector: #selector(self.updateProgress),
-userInfo: nil, repeats: true)
-self.timer.fire()
+    self.timer = NSTimer.scheduledTimerWithTimeInterval(
+    1.0, target: self, selector: #selector(self.updateProgress),
+    userInfo: nil, repeats: true)
+    self.timer.fire()
 }
 
 func updateProgress() {
 
-i = i + 0.1
+    i = i + 0.1
 
-if i > 1.0 {
-self.a.setProgress(Float(self.i))
-i = 0.1
-} else {
-self.a.setProgress(Float(self.i))
-}
+    if i > 1.0 {
+        self.a.setProgress(Float(self.i))
+        i = 0.1
+    } else {
+        self.a.setProgress(Float(self.i))
+    }
 }
 ```
 
