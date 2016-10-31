@@ -5,11 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/EGGProgressHUD.svg?style=flat)](http://cocoapods.org/pods/EGGProgressHUD)
 [![Platform](https://img.shields.io/cocoapods/p/EGGProgressHUD.svg?style=flat)](http://cocoapods.org/pods/EGGProgressHUD)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+EGGProgressHUD works on iOS 8.0+
 
 ## Installation
 
@@ -22,6 +20,10 @@ pod "EGGProgressHUD"
 
 1. Add a pod entry for EGGProgressHUD to your Podfile pod 'EGGProgressHUD'
 2. Install the pod(s) by running pod install.
+
+## Usage
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
 
 ## Author
 
