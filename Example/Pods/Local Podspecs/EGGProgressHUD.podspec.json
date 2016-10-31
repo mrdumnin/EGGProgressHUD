@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "EGGProgressHUD/Classes/**/*"
+  "source_files": "EGGProgressHUD/Classes/**/*",
+  "resource_bundles": {
+    "EGGProgressHUD": [
+      "EGGProgressHUD/Assets/EGGProgressHUDResource/*.png"
+    ]
+  }
 }
