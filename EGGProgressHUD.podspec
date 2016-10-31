@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EGGProgressHUD'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'EGGProgressHUD is simply progress dialog for ongoing task on iOS.'
 
 # This description is used to generate tags and improve search results.
