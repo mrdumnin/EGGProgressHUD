@@ -24,6 +24,84 @@ pod "EGGProgressHUD"
 ## Usage
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+###### Progress without BG
+```swift
+let a = EGGProgressHUD()
+a.showInView(self.view)
+
+let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
+    a.hide()
+}
+```
+
+###### Progress with BG
+```swift
+let a = EGGProgressHUD()
+a.type = EGGProgressHUD.ProgressType.ProgressWithBG
+a.style = EGGProgressHUD.SpinnerStyle.White
+a.bgColor = UIColor.grayColor()
+
+a.showInView(self.view)
+
+let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
+    a.hide()
+}
+```
+
+###### Progress view
+```swift
+private var i = 0.0
+private var timer: NSTimer!
+private var a: EGGProgressHUD!
+override func viewDidDisappear(animated: Bool) {
+    self.timer.invalidate()
+}
+
+override func viewDidLoad() {
+super.viewDidLoad()
+
+// Do any additional setup after loading the view.
+self.a = EGGProgressHUD()
+self.a.type = EGGProgressHUD.ProgressType.ProgressView
+self.a.bgColor = UIColor.grayColor()
+self.a.loadingTextColor = UIColor.whiteColor()
+self.a.showInView(self.view)
+
+self.timer = NSTimer.scheduledTimerWithTimeInterval(
+1.0, target: self, selector: #selector(self.updateProgress),
+userInfo: nil, repeats: true)
+self.timer.fire()
+}
+
+func updateProgress() {
+
+i = i + 0.1
+
+if i > 1.0 {
+self.a.setProgress(Float(self.i))
+i = 0.1
+} else {
+self.a.setProgress(Float(self.i))
+}
+}
+```
+
+###### Progress image
+```swift
+let a = EGGProgressHUD()
+a.type = EGGProgressHUD.ProgressType.ProgressImage
+//a.loadingImage = UIImage(named: "Chicken Filled-80")
+//a.loadingImage = UIImage(named: "Hourglass Filled-80")
+a.loadingImage = UIImage(named: "Pig Filled-80")
+a.showInView(self.view)
+
+let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
+//a.hide()
+}
+```
 
 ## Author
 
