@@ -24,7 +24,7 @@ pod "EGGProgressHUD"
 ## Usage
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-###### Progress without BG
+**Progress without BG**
 ```swift
 let a = EGGProgressHUD()
 a.showInView(self.view)
@@ -35,7 +35,7 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_
 }
 ```
 
-###### Progress with BG
+**Progress with BG**
 ```swift
 let a = EGGProgressHUD()
 a.type = EGGProgressHUD.ProgressType.ProgressWithBG
@@ -50,7 +50,7 @@ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_
 }
 ```
 
-###### Progress view
+**Progress view**
 ```swift
 private var i = 0.0
 private var timer: NSTimer!
@@ -88,7 +88,7 @@ func updateProgress() {
 }
 ```
 
-###### Progress image
+**Progress image**
 ```swift
 let a = EGGProgressHUD()
 a.type = EGGProgressHUD.ProgressType.ProgressImage
