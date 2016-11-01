@@ -29,10 +29,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'EGGProgressHUD/Classes/**/*'
-  
-  s.resource_bundles = {
-     'EGGProgressHUD' => ['EGGProgressHUD/Assets/EGGProgressHUDResource/*.png']
-  }
+  s.resources    = 'EGGProgressHUD/Assets/EGGProgressHUDResource.bundle'
+
+#s.resource_bundles = {
+#    'EGGProgressHUD' => ['EGGProgressHUD/Assets/EGGProgressHUDResource/*.png']
+# }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

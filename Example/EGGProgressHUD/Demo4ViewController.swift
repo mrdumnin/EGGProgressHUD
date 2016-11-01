@@ -20,7 +20,7 @@ class Demo4ViewController: UIViewController {
         a.type = EGGProgressHUD.ProgressType.ProgressImage
         //a.loadingImage = UIImage(named: "Chicken Filled-80")
         //a.loadingImage = UIImage(named: "Hourglass Filled-80")
-        a.loadingImage = UIImage(named: "Pig Filled-80")
+        //a.loadingImage = UIImage(named: "Pig Filled-80")
         a.showInView(self.view)
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
