@@ -21,6 +21,12 @@ pod "EGGProgressHUD"
 1. Add a pod entry for EGGProgressHUD to your Podfile pod 'EGGProgressHUD'
 2. Install the pod(s) by running pod install.
 
+## Screenshot
+![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917210/a6504f4c-a0f3-11e6-97fd-2be68d834876.gif)
+![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917211/a651e30c-a0f3-11e6-9296-ec6656024edc.gif)
+![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917209/a64d4ad6-a0f3-11e6-855b-c988989d1062.gif)
+![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917208/a5e46c8c-a0f3-11e6-9843-d442ee95a789.gif)
+
 ## Usage
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
