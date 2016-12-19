@@ -52,6 +52,12 @@ public class EGGProgressHUD: NSObject {
     public override init() {
         super.init()
         
+        self.spinner = UIActivityIndicatorView()
+        self.loadingBGView = UIView()
+        self.loadingBGView = UIView()
+        self.loadingImageView = UIImageView()
+
+        
         self.type = ProgressType.ProgressWithoutBG
         self.style = SpinnerStyle.Gray
         self.bgColor = UIColor.blackColor()
@@ -117,7 +123,7 @@ public class EGGProgressHUD: NSObject {
     }
     
     private func setupProgressWithoutBG() {
-        self.spinner = UIActivityIndicatorView()
+        //self.spinner = UIActivityIndicatorView()
         if self.style == SpinnerStyle.White {
             self.spinner.activityIndicatorViewStyle = .WhiteLarge
         } else {
@@ -134,7 +140,7 @@ public class EGGProgressHUD: NSObject {
     }
     
     private func setupProgressWithBG() {
-        self.loadingBGView = UIView()
+        //self.loadingBGView = UIView()
         let screenSize = UIScreen.mainScreen().bounds.size
         let bgSize = CGSize(width: 80, height: 80)
         let x = (screenSize.width / 2) - (bgSize.width / 2)
@@ -158,7 +164,7 @@ public class EGGProgressHUD: NSObject {
     }
     
     private func setupProgressView() {
-        self.loadingBGView = UIView()
+        //self.loadingBGView = UIView()
         let screenSize = UIScreen.mainScreen().bounds.size
         let bgSize = CGSize(width: 200, height: 60)
         let x = (screenSize.width / 2) - (bgSize.width / 2)
@@ -193,7 +199,7 @@ public class EGGProgressHUD: NSObject {
     }
     
     private func setupProgressImage() {
-        self.loadingImageView = UIImageView()
+        //self.loadingImageView = UIImageView()
         self.loadingImageView.image = self.loadingImage
         self.loadingImageView.backgroundColor = UIColor.clearColor()
         
