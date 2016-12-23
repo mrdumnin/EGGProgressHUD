@@ -27,7 +27,7 @@ pod "EGGProgressHUD"
 ![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917209/a64d4ad6-a0f3-11e6-855b-c988989d1062.gif)
 ![Alt Text](https://cloud.githubusercontent.com/assets/6711521/19917208/a5e46c8c-a0f3-11e6-9843-d442ee95a789.gif)
 
-## Usage
+## Usage(Swift 3.0)
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 **Progress without BG**
@@ -36,70 +36,75 @@ let a = EGGProgressHUD()
 a.showInView(self.view)
 
 let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
-dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
-    a.hide()
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
+a.hide()
 }
 ```
 
 **Progress with BG**
 ```swift
 let a = EGGProgressHUD()
-a.type = EGGProgressHUD.ProgressType.ProgressWithBG
-a.style = EGGProgressHUD.SpinnerStyle.White
-a.bgColor = UIColor.grayColor()
+a.type = EGGProgressHUD.ProgressType.progressWithBG
+a.style = EGGProgressHUD.SpinnerStyle.white
+a.bgColor = UIColor.gray
 
 a.showInView(self.view)
 
 let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
-dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
-    a.hide()
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
+a.hide()
 }
 ```
 
 **Progress view**
 ```swift
-private var i = 0.0
-private var timer: NSTimer!
-private var a: EGGProgressHUD!
-override func viewDidDisappear(animated: Bool) {
-    self.timer.invalidate()
+fileprivate var i = 0.0
+fileprivate var timer: Timer!
+fileprivate var a: EGGProgressHUD!
+
+override func viewDidDisappear(_ animated: Bool) {
+self.timer.invalidate()
 }
 
 override func viewDidLoad() {
-    super.viewDidLoad()
+super.viewDidLoad()
 
-    // Do any additional setup after loading the view.
-    self.a = EGGProgressHUD()
-    self.a.type = EGGProgressHUD.ProgressType.ProgressView
-    self.a.bgColor = UIColor.grayColor()
-    self.a.loadingTextColor = UIColor.whiteColor()
-    self.a.showInView(self.view)
+// Do any additional setup after loading the view.
+self.a = EGGProgressHUD()
+self.a.type = EGGProgressHUD.ProgressType.progressView
+self.a.bgColor = UIColor.gray
+self.a.loadingTextColor = UIColor.white
+self.a.showInView(self.view)
 
-    self.timer = NSTimer.scheduledTimerWithTimeInterval(
-    1.0, target: self, selector: #selector(self.updateProgress),
-    userInfo: nil, repeats: true)
-    self.timer.fire()
+self.timer = Timer.scheduledTimer(
+timeInterval: 1.0, target: self, selector: #selector(self.updateProgress),
+userInfo: nil, repeats: true)
+self.timer.fire()
 }
 
 func updateProgress() {
 
-    i = i + 0.1
+i = i + 0.1
 
-    if i > 1.0 {
-        self.a.setProgress(Float(self.i))
-        i = 0.1
-    } else {
-        self.a.setProgress(Float(self.i))
-    }
+if i > 1.0 {
+self.a.setProgress(Float(self.i))
+i = 0.1
+} else {
+self.a.setProgress(Float(self.i))
+}
 }
 ```
 
 **Progress image**
 ```swift
 let a = EGGProgressHUD()
-a.type = EGGProgressHUD.ProgressType.ProgressImage
-a.loadingImage = UIImage(named: "Pig Filled-80")
+a.type = EGGProgressHUD.ProgressType.progressImage
 a.showInView(self.view)
+
+let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
+
+}
 ```
 
 ## Author
