@@ -37,7 +37,7 @@ a.showInView(self.view)
 
 let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
-a.hide()
+    a.hide()
 }
 ```
 
@@ -52,7 +52,7 @@ a.showInView(self.view)
 
 let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
-a.hide()
+    a.hide()
 }
 ```
 
@@ -63,35 +63,36 @@ fileprivate var timer: Timer!
 fileprivate var a: EGGProgressHUD!
 
 override func viewDidDisappear(_ animated: Bool) {
-self.timer.invalidate()
+    self.timer.invalidate()
 }
 
 override func viewDidLoad() {
-super.viewDidLoad()
+    super.viewDidLoad()
 
-// Do any additional setup after loading the view.
-self.a = EGGProgressHUD()
-self.a.type = EGGProgressHUD.ProgressType.progressView
-self.a.bgColor = UIColor.gray
-self.a.loadingTextColor = UIColor.white
-self.a.showInView(self.view)
+    // Do any additional setup after loading the view.
+    self.a = EGGProgressHUD()
+    self.a.type = EGGProgressHUD.ProgressType.progressView
+    self.a.bgColor = UIColor.gray
+    self.a.loadingTextColor = UIColor.white
+    self.a.showInView(self.view)
 
-self.timer = Timer.scheduledTimer(
-timeInterval: 1.0, target: self, selector: #selector(self.updateProgress),
-userInfo: nil, repeats: true)
-self.timer.fire()
+    self.timer = Timer.scheduledTimer(
+                    timeInterval: 1.0, target: self, selector: #selector(self.updateProgress),
+                    userInfo: nil, repeats: true
+                )
+    self.timer.fire()
 }
 
 func updateProgress() {
 
-i = i + 0.1
+    i = i + 0.1
 
-if i > 1.0 {
-self.a.setProgress(Float(self.i))
-i = 0.1
-} else {
-self.a.setProgress(Float(self.i))
-}
+    if i > 1.0 {
+        self.a.setProgress(Float(self.i))
+        i = 0.1
+    } else {
+        self.a.setProgress(Float(self.i))
+    }
 }
 ```
 
