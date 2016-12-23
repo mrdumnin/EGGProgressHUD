@@ -11,10 +11,10 @@ import EGGProgressHUD
 
 class Demo3ViewController: UIViewController {
 
-    private var i = 0.0
-    private var timer: NSTimer!
-    private var a: EGGProgressHUD!
-    override func viewDidDisappear(animated: Bool) {
+    fileprivate var i = 0.0
+    fileprivate var timer: Timer!
+    fileprivate var a: EGGProgressHUD!
+    override func viewDidDisappear(_ animated: Bool) {
         self.timer.invalidate()
     }
     
@@ -23,13 +23,13 @@ class Demo3ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.a = EGGProgressHUD()
-        self.a.type = EGGProgressHUD.ProgressType.ProgressView
-        self.a.bgColor = UIColor.grayColor()
-        self.a.loadingTextColor = UIColor.whiteColor()
+        self.a.type = EGGProgressHUD.ProgressType.progressView
+        self.a.bgColor = UIColor.gray
+        self.a.loadingTextColor = UIColor.white
         self.a.showInView(self.view)
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(
-            1.0, target: self, selector: #selector(self.updateProgress),
+        self.timer = Timer.scheduledTimer(
+            timeInterval: 1.0, target: self, selector: #selector(self.updateProgress),
             userInfo: nil, repeats: true)
         self.timer.fire()
     }

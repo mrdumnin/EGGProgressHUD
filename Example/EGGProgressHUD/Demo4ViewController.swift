@@ -17,14 +17,14 @@ class Demo4ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let a = EGGProgressHUD()
-        a.type = EGGProgressHUD.ProgressType.ProgressImage
+        a.type = EGGProgressHUD.ProgressType.progressImage
         //a.loadingImage = UIImage(named: "Chicken Filled-80")
         //a.loadingImage = UIImage(named: "Hourglass Filled-80")
         //a.loadingImage = UIImage(named: "Pig Filled-80")
         a.showInView(self.view)
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
             //a.hide()
         }
     }

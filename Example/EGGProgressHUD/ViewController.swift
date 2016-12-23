@@ -12,7 +12,7 @@ import EGGProgressHUD
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    private var datasource: NSMutableArray!
+    fileprivate var datasource: NSMutableArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         self.setupDatasource()
         self.tableView.reloadData()
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,26 +30,26 @@ class ViewController: UIViewController {
 
     func setupDatasource() {
         self.datasource = NSMutableArray()
-        self.datasource.addObject("Progress without BG")
-        self.datasource.addObject("Progress with BG")
-        self.datasource.addObject("Progress view")
-        self.datasource.addObject("Progress image")
+        self.datasource.add("Progress without BG")
+        self.datasource.add("Progress with BG")
+        self.datasource.add("Progress view")
+        self.datasource.add("Progress image")
     }
 }
 
 // MARK: - UITableView UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.datasource.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if let cell = tableView.dequeueReusableCellWithIdentifier("Cell") {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") {
             let text = self.datasource[indexPath.row] as! String
             cell.textLabel?.text = text
             return cell
@@ -61,9 +61,9 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - UITableView UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.tableView.deselectRow(at: indexPath, animated: true)
         
         let text = self.datasource[indexPath.row] as! String
         let storyboardName = "Main"

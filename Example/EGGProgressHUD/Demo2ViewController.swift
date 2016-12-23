@@ -16,14 +16,14 @@ class Demo2ViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let a = EGGProgressHUD()
-        a.type = EGGProgressHUD.ProgressType.ProgressWithBG
-        a.style = EGGProgressHUD.SpinnerStyle.White
-        a.bgColor = UIColor.grayColor()
+        a.type = EGGProgressHUD.ProgressType.progressWithBG
+        a.style = EGGProgressHUD.SpinnerStyle.white
+        a.bgColor = UIColor.gray
         
         a.showInView(self.view)
         
         let triggerTime = (Int64(NSEC_PER_SEC) * 5) //5 Sec
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue()) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(triggerTime) / Double(NSEC_PER_SEC)) {
             a.hide()
         }
     }

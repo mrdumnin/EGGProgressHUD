@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class EGGProgressHUD: NSObject {
-    private var rotateAngle:CGFloat = 0.0
-    private var isAnimating:Bool = false
-    private var spinner: UIActivityIndicatorView!
-    private var loadingBGView: UIView!
-    private var progressView: UIProgressView!
-    private var loadingLabel: UILabel!
+open class EGGProgressHUD: NSObject {
+    fileprivate var rotateAngle:CGFloat = 0.0
+    fileprivate var isAnimating:Bool = false
+    fileprivate var spinner: UIActivityIndicatorView!
+    fileprivate var loadingBGView: UIView!
+    fileprivate var progressView: UIProgressView!
+    fileprivate var loadingLabel: UILabel!
     
-    private var loadingImageView: UIImageView!
+    fileprivate var loadingImageView: UIImageView!
     
     //MARK: - Property user can set
     public var type: ProgressType!
@@ -29,22 +29,22 @@ public class EGGProgressHUD: NSObject {
     public var loadingImage: UIImage!
     
     public enum ProgressType {
-        case ProgressWithoutBG
-        case ProgressWithBG
-        case ProgressView
-        case ProgressImage
+        case progressWithoutBG
+        case progressWithBG
+        case progressView
+        case progressImage
     }
     
     public enum SpinnerStyle {
-        case White
-        case Gray
+        case white
+        case gray
     }
 
-    private var bundle:NSBundle {
-        let podBundle = NSBundle(forClass: EGGProgressHUD.self)
+    fileprivate var bundle:Bundle {
+        let podBundle = Bundle(for: EGGProgressHUD.self)
         
-        let bundleURL = podBundle.URLForResource("EGGProgressHUDResource", withExtension: "bundle")
-        let bundle = NSBundle(URL: bundleURL!)!
+        let bundleURL = podBundle.url(forResource: "EGGProgressHUDResource", withExtension: "bundle")
+        let bundle = Bundle(url: bundleURL!)!
         return bundle
     }
     
@@ -58,97 +58,97 @@ public class EGGProgressHUD: NSObject {
         self.loadingImageView = UIImageView()
 
         
-        self.type = ProgressType.ProgressWithoutBG
-        self.style = SpinnerStyle.Gray
-        self.bgColor = UIColor.blackColor()
-        self.loadingTextColor = UIColor.blackColor()
-        self.progressTrackTintColor = UIColor.whiteColor()
-        self.progressTintColor = UIColor.blueColor()
+        self.type = ProgressType.progressWithoutBG
+        self.style = SpinnerStyle.gray
+        self.bgColor = UIColor.black
+        self.loadingTextColor = UIColor.black
+        self.progressTrackTintColor = UIColor.white
+        self.progressTintColor = UIColor.blue
         
         self.loadingText = "Loading..."
         
         //self.loadingImage = UIImage(named: "loading.png", inBundle: self.bundle, compatibleWithTraitCollection: nil)
-        self.loadingImage = UIImage(named: "Circle-Progress.png", inBundle: self.bundle, compatibleWithTraitCollection: nil)
+        self.loadingImage = UIImage(named: "Circle-Progress.png", in: self.bundle, compatibleWith: nil)
     }
     
-    public func showInView(view: UIView) {
+    open func showInView(_ view: UIView) {
         
-         if self.type == ProgressType.ProgressWithoutBG {
+         if self.type == ProgressType.progressWithoutBG {
             self.setupProgressWithoutBG()
             
             self.spinner.removeFromSuperview()
             view.addSubview(self.spinner)
             
             self.spinner.startAnimating()
-         } else if self.type == ProgressType.ProgressWithBG {
+         } else if self.type == ProgressType.progressWithBG {
             self.setupProgressWithoutBG()
             self.setupProgressWithBG()
             
-            self.loadingBGView.hidden = false
+            self.loadingBGView.isHidden = false
             self.loadingBGView.removeFromSuperview()
             view.addSubview(self.loadingBGView)
-         } else if self.type == ProgressType.ProgressView {
+         } else if self.type == ProgressType.progressView {
             self.setupProgressView()
             
-            self.loadingBGView.hidden = false
+            self.loadingBGView.isHidden = false
             self.loadingBGView.removeFromSuperview()
             view.addSubview(self.loadingBGView)
-         } else if self.type == ProgressType.ProgressImage {
+         } else if self.type == ProgressType.progressImage {
             self.setupProgressImage()
             
-            self.loadingImageView.hidden = false
+            self.loadingImageView.isHidden = false
             self.loadingImageView.removeFromSuperview()
             view.addSubview(self.loadingImageView)
         }
     }
     
-    public func hide() {
-        if self.type == ProgressType.ProgressWithBG || self.type == ProgressType.ProgressView {
-            self.loadingBGView.hidden = true
-        } else if self.type == ProgressType.ProgressWithoutBG {
+    open func hide() {
+        if self.type == ProgressType.progressWithBG || self.type == ProgressType.progressView {
+            self.loadingBGView.isHidden = true
+        } else if self.type == ProgressType.progressWithoutBG {
             self.spinner.stopAnimating()
-        } else if self.type == ProgressType.ProgressImage {
+        } else if self.type == ProgressType.progressImage {
             self.stopAnimateLoadingImageView()
-            self.loadingImageView.hidden = true
+            self.loadingImageView.isHidden = true
         }
     }
     
-    public func setProgress(progress: Float) {
+    open func setProgress(_ progress: Float) {
         guard (self.progressView == nil) else {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.progressView.setProgress(progress, animated: true)
             }
             return
         }
     }
     
-    private func setupProgressWithoutBG() {
+    fileprivate func setupProgressWithoutBG() {
         //self.spinner = UIActivityIndicatorView()
-        if self.style == SpinnerStyle.White {
-            self.spinner.activityIndicatorViewStyle = .WhiteLarge
+        if self.style == SpinnerStyle.white {
+            self.spinner.activityIndicatorViewStyle = .whiteLarge
         } else {
-            self.spinner.activityIndicatorViewStyle = .Gray
+            self.spinner.activityIndicatorViewStyle = .gray
         }
         
         self.spinner.hidesWhenStopped = true
         
-        let screenSize = UIScreen.mainScreen().bounds.size
+        let screenSize = UIScreen.main.bounds.size
         let spinnerSize = CGSize(width: 30, height: 30)
         let x = (screenSize.width / 2) - (spinnerSize.width / 2)
         let y = (screenSize.height / 2) - (spinnerSize.height / 2)
-        self.spinner.frame = CGRectMake(x, y, spinnerSize.width, spinnerSize.height)
+        self.spinner.frame = CGRect(x: x, y: y, width: spinnerSize.width, height: spinnerSize.height)
     }
     
-    private func setupProgressWithBG() {
+    fileprivate func setupProgressWithBG() {
         //self.loadingBGView = UIView()
-        let screenSize = UIScreen.mainScreen().bounds.size
+        let screenSize = UIScreen.main.bounds.size
         let bgSize = CGSize(width: 80, height: 80)
         let x = (screenSize.width / 2) - (bgSize.width / 2)
         let y = (screenSize.height / 2) - (bgSize.height / 2)
-        self.loadingBGView.frame = CGRectMake(x, y, bgSize.width, bgSize.height)
+        self.loadingBGView.frame = CGRect(x: x, y: y, width: bgSize.width, height: bgSize.height)
         self.loadingBGView.backgroundColor = self.bgColor
         self.loadingBGView.layer.cornerRadius = 5.0
-        self.loadingBGView.layer.borderColor = UIColor.grayColor().CGColor
+        self.loadingBGView.layer.borderColor = UIColor.gray.cgColor
         self.loadingBGView.layer.borderWidth = 0.5
         self.loadingBGView.clipsToBounds = true
         
@@ -157,22 +157,22 @@ public class EGGProgressHUD: NSObject {
         let spinner_x = (loadingBGViewSize.width / 2) - (spinnerSize.width / 2)
         let spinner_y = (loadingBGViewSize.height / 2) - (spinnerSize.height / 2)
         
-        self.spinner.frame = CGRectMake(spinner_x, spinner_y
-            , spinnerSize.width, spinnerSize.height)
+        self.spinner.frame = CGRect(x: spinner_x, y: spinner_y
+            , width: spinnerSize.width, height: spinnerSize.height)
         self.loadingBGView.addSubview(self.spinner)
         self.spinner.startAnimating()
     }
     
-    private func setupProgressView() {
+    fileprivate func setupProgressView() {
         //self.loadingBGView = UIView()
-        let screenSize = UIScreen.mainScreen().bounds.size
+        let screenSize = UIScreen.main.bounds.size
         let bgSize = CGSize(width: 200, height: 60)
         let x = (screenSize.width / 2) - (bgSize.width / 2)
         let y = (screenSize.height / 2) - (bgSize.height / 2)
-        self.loadingBGView.frame = CGRectMake(x, y, bgSize.width, bgSize.height)
+        self.loadingBGView.frame = CGRect(x: x, y: y, width: bgSize.width, height: bgSize.height)
         self.loadingBGView.backgroundColor = self.bgColor
         self.loadingBGView.layer.cornerRadius = 5.0
-        self.loadingBGView.layer.borderColor = UIColor.grayColor().CGColor
+        self.loadingBGView.layer.borderColor = UIColor.gray.cgColor
         self.loadingBGView.layer.borderWidth = 0.5
         self.loadingBGView.clipsToBounds = true
         
@@ -180,8 +180,8 @@ public class EGGProgressHUD: NSObject {
         let subViewWidth: CGFloat = bgSize.width - (padding * 2)
         //Progress View
         self.progressView = UIProgressView()
-        self.progressView.progressViewStyle = .Bar
-        self.progressView.frame = CGRectMake(padding, 20, subViewWidth, 21)
+        self.progressView.progressViewStyle = .bar
+        self.progressView.frame = CGRect(x: padding, y: 20, width: subViewWidth, height: 21)
         self.progressView.progress = 0.0
         self.progressView.trackTintColor = self.progressTrackTintColor
         self.progressView.tintColor = self.progressTintColor
@@ -189,8 +189,8 @@ public class EGGProgressHUD: NSObject {
         
         //Loading label
         self.loadingLabel = UILabel()
-        self.loadingLabel.textAlignment = .Center
-        self.loadingLabel.frame = CGRectMake(padding, bgSize.height - 30, subViewWidth, 21)
+        self.loadingLabel.textAlignment = .center
+        self.loadingLabel.frame = CGRect(x: padding, y: bgSize.height - 30, width: subViewWidth, height: 21)
         self.loadingLabel.text = self.loadingText
         self.loadingLabel.textColor = self.loadingTextColor
         
@@ -198,27 +198,27 @@ public class EGGProgressHUD: NSObject {
         
     }
     
-    private func setupProgressImage() {
+    fileprivate func setupProgressImage() {
         //self.loadingImageView = UIImageView()
         self.loadingImageView.image = self.loadingImage
-        self.loadingImageView.backgroundColor = UIColor.clearColor()
+        self.loadingImageView.backgroundColor = UIColor.clear
         
-        let screenSize = UIScreen.mainScreen().bounds.size
+        let screenSize = UIScreen.main.bounds.size
         let imageSize = CGSize(width: 40, height: 40)
         let x = (screenSize.width / 2) - (imageSize.width / 2)
         let y = (screenSize.height / 2) - (imageSize.height / 2)
         
-        self.loadingImageView.frame = CGRectMake(x, y, imageSize.width, imageSize.height)
+        self.loadingImageView.frame = CGRect(x: x, y: y, width: imageSize.width, height: imageSize.height)
         self.startAnimateLoadingImageView()
         self.isAnimating = true
     }
     
-    private func startAnimateLoadingImageView() {
+    fileprivate func startAnimateLoadingImageView() {
         
         rotateAngle += CGFloat(M_PI)
 
-        let rotateTransform = CGAffineTransformMakeRotation(rotateAngle)
-        UIView.animateWithDuration(0.4, delay: 0, options: [.AllowUserInteraction, .CurveLinear], animations: { () -> Void in
+        let rotateTransform = CGAffineTransform(rotationAngle: rotateAngle)
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.allowUserInteraction, .curveLinear], animations: { () -> Void in
             self.loadingImageView.transform = rotateTransform
             },completion:  { (finished: Bool) in
                 
@@ -240,7 +240,7 @@ public class EGGProgressHUD: NSObject {
         self.loadingImageView.layer.addAnimation(rotateAnimation, forKey: nil)
     }*/
     
-    private func stopAnimateLoadingImageView() {
+    fileprivate func stopAnimateLoadingImageView() {
         self.isAnimating = false
     }
 }
